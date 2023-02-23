@@ -18,7 +18,7 @@ wss.on("connection", function connection(scene) {
     console.log("[Message]: ", data.toString());
 
     if (data.toString() == "sceneB") {
-      walls[1].send("load");
+      walls[1].send("act");
     }
 
     scene.send("from Server");

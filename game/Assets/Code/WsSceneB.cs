@@ -14,6 +14,7 @@ public class WsSceneB: MonoBehaviour {
             
             if (data.Data == "act") {
                //do something
+               Debug.Log("[sceneB]: Acting");
             }
         };
     }
