@@ -9,9 +9,18 @@ wss.on("listening", () => {
   console.log(`Listening on ${port}`);
 });
 
-wss.on("connection", function connection(stream) {
-  stream.on("message", (data) => {
+let walls: Array<any>;
+
+wss.on("connection", function connection(scene) {
+  walls = Array.from(wss.clients);
+
+  scene.on("message", (data) => {
     console.log("[Message]: ", data.toString());
-    stream.send("from Server");
+
+    if (data.toString() == "sceneB") {
+      walls[1].send("load");
+    }
+
+    scene.send("from Server");
   });
 });
